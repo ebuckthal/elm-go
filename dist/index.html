@@ -9382,7 +9382,11 @@ var _user$project$Main$renderPiece = F3(
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.7'),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$cursor('pointer'),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						};
@@ -9396,7 +9400,11 @@ var _user$project$Main$renderPiece = F3(
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.7'),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$cursor('pointer'),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						};
@@ -9408,7 +9416,7 @@ var _user$project$Main$renderPiece = F3(
 		}();
 		var pieceAttributes = _elm_lang$core$Native_Utils.eq(point, _user$project$Main$White) ? {
 			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.7'),
+			_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.5'),
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$svg$Svg_Attributes$stroke('black'),
@@ -9420,7 +9428,7 @@ var _user$project$Main$renderPiece = F3(
 			}
 		} : (_elm_lang$core$Native_Utils.eq(point, _user$project$Main$Black) ? {
 			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.7'),
+			_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.5'),
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$svg$Svg_Attributes$stroke('black'),
@@ -9453,7 +9461,7 @@ var _user$project$Main$renderPiece = F3(
 		});
 		var pointCenter = (100 / _elm_lang$core$Basics$toFloat(
 			_chendrix$elm_matrix$Matrix$colCount(model.board))) / 2;
-		var pointWidth = pointCenter * 0.95;
+		var pointWidth = pointCenter * 0.9;
 		return A2(
 			_elm_lang$svg$Svg$circle,
 			_elm_lang$core$List$concat(
@@ -9489,7 +9497,6 @@ var _user$project$Main$renderPiece = F3(
 	});
 var _user$project$Main$renderPoint = F3(
 	function (model, loc, point) {
-		var labelText = _elm_lang$core$Native_Utils.eq(point, _user$project$Main$Black) ? 'black' : 'empty';
 		var pointSize = 100 / _elm_lang$core$Basics$toFloat(
 			_chendrix$elm_matrix$Matrix$colCount(model.board));
 		var transformString = A2(
@@ -9595,7 +9602,7 @@ var _user$project$Main$renderGo = function (model) {
 					_0: _elm_lang$svg$Svg_Attributes$fill('url(#lines)'),
 					_1: {
 						ctor: '::',
-						_0: _elm_lang$svg$Svg_Attributes$fillOpacity('0.1'),
+						_0: _elm_lang$svg$Svg_Attributes$fillOpacity('0.05'),
 						_1: {ctor: '[]'}
 					}
 				}

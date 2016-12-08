@@ -123,51 +123,6 @@ view model =
         ]
 
 
-renderGoHtml : Model -> Html Msg
-renderGoHtml model =
-    div
-        [ Html.Attributes.style
-            [ ( "height", "500px" )
-            , ( "width", "500px" )
-            , ( "position", "relative" )
-            ]
-        ]
-        (flatten (mapWithLocation (renderPointHtml model) model.board))
-
-
-renderPointHtml : Model -> Location -> Point -> Html Msg
-renderPointHtml model loc point =
-    let
-        pointSize =
-            (500 / (toFloat (colCount model.board)))
-
-        pointSizePx =
-            (toString pointSize) ++ "px"
-
-        left =
-            (pointSize * (toFloat (Matrix.col loc)))
-
-        top =
-            (pointSize * (toFloat (Matrix.row loc)))
-
-        leftPx =
-            (toString left) ++ "px"
-
-        topPx =
-            (toString top) ++ "px"
-    in
-        div
-            [ Html.Attributes.style
-                [ ( "position", "absolute" )
-                , ( "top", topPx )
-                , ( "left", leftPx )
-                , ( "width", pointSizePx )
-                , ( "height", pointSizePx )
-                ]
-            ]
-            []
-
-
 renderGo : Model -> Html Msg
 renderGo model =
     let
@@ -192,7 +147,7 @@ renderGo model =
                 [ Svg.Attributes.width "100"
                 , Svg.Attributes.height "100"
                 , fill "url(#lines)"
-                , fillOpacity "0.1"
+                , fillOpacity "0.05"
                 ]
                 []
     in
@@ -215,13 +170,13 @@ renderPiece model loc point =
             (100 / (toFloat (colCount model.board)) / 2)
 
         pointWidth =
-            pointCenter * 0.95
+            pointCenter * 0.9
 
         pieceAttributes =
             if (point == White) then
-                [ strokeWidth "0.7", stroke "black", fill "white" ]
+                [ strokeWidth "0.5", stroke "black", fill "white" ]
             else if (point == Black) then
-                [ strokeWidth "0.7", stroke "black", fill "black" ]
+                [ strokeWidth "0.5", stroke "black", fill "black" ]
             else
                 [ fill "transparent"
                 , Svg.Events.onMouseOver (SetMouseOver (Just loc))
@@ -238,10 +193,10 @@ renderPiece model loc point =
                     if (mouseOver == loc) then
                         case model.turn of
                             WhiteTeam ->
-                                [ fill "white", stroke "red", strokeWidth "0.7" ]
+                                [ fill "white", stroke "red", strokeWidth "0.7", cursor "pointer" ]
 
                             BlackTeam ->
-                                [ fill "black", stroke "red", strokeWidth "0.7" ]
+                                [ fill "black", stroke "red", strokeWidth "0.7", cursor "pointer" ]
                     else
                         []
     in
@@ -285,12 +240,6 @@ renderPoint model loc point =
     let
         pointSize =
             (100 / (toFloat (colCount model.board)))
-
-        labelText =
-            if (point == Black) then
-                "black"
-            else
-                "empty"
 
         transformString =
             ("translate("
